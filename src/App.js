@@ -4,6 +4,7 @@ import Button from './Components/Button';
 import ClearButton from './Components/ClearButton';
 import CalculatorLogo from './Image/Calculator logo.png';
 import { useState } from 'react';
+import {evaluate } from 'mathjs';
 
 function App() {
 
@@ -11,6 +12,10 @@ function App() {
 
   const addInput = value =>{
     setInput(input + value);
+  }
+
+  const Result = () => {
+    setInput(evaluate(input));
   }
 
   return (
@@ -41,7 +46,7 @@ function App() {
           <Button handleClic={addInput}>*</Button>
         </div>
         <div className='row'>
-          <Button handleClic={addInput}>=</Button>
+          <Button handleClic={Result}>=</Button>
           <Button handleClic={addInput}>0</Button>
           <Button handleClic={addInput}>.</Button>
           <Button handleClic={addInput}>/</Button>
